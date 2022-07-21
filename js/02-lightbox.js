@@ -14,3 +14,12 @@ gallery.classList.add('gallery__item')
 gallery.insertAdjacentHTML("afterbegin", creatList); 
 
 
+const simplebox = new SimpleLightbox('.gallery a', {
+  captionsData: "alt",
+  captionDelay: 250,
+  captionPosition: "bottom",
+});
+simplebox.on('show.simplelightbox', function () {
+	
+});
+simplebox.next();

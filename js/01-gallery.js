@@ -19,7 +19,7 @@ gallery.addEventListener("click", openModal);
 function openModal (element) {
   element.preventDefault ()
   const instance = basicLightbox.create(`
-  <img src=${element.target.src} width="800" height="600">`,
+  <img src=${element.target.dataset.source} width="800" height="600">`,
 {
   onShow: ()=> window.addEventListener('keydown', onEscspeClick), 
   }
