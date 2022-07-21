@@ -1,6 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-const creatLi = galleryItems
+const creatList = galleryItems
   .map((galleryItem) =>`<a class="gallery__link" href="${galleryItem.original}">
     <img
       class="gallery__image"
@@ -12,23 +12,20 @@ const creatLi = galleryItems
   .join("");
 const gallery = document.querySelector(".gallery");
 gallery.classList.add('gallery__item')
-gallery.insertAdjacentHTML("afterbegin", creatLi); 
-
-function clic (e) {
-  console.log(e.target)
-}
-gallery.addEventListener('click', clic);
+gallery.insertAdjacentHTML("afterbegin", creatList); 
 
 gallery.addEventListener("click", openModal);
 
-function openModal (el) {
-  el.preventDefault ()
+function openModal (element) {
+  element.preventDefault ()
   const instance = basicLightbox.create(`
-  <img src=${el.target.src} width="800" height="600">
-`)
-onShow: () => window.addEventListener ()
+  <img src=${element.target.src} width="800" height="600">`,
+{
+  onShow: ()=> window.addEventListener('keydown', onEscspeClick), 
+  }
+  )
 instance.show()
-function esc (e) {
+function onEscspeClick (e) {
   if (e.code === 'Escape')
   {instance.close()}
 }
